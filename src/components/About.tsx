@@ -77,7 +77,7 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
             className="space-y-6"
             initial={{ x: 50, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.4 }}
           >
             {[{
               title: 'Mission',
@@ -98,8 +98,8 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
               <motion.div
                 key={idx}
                 className={`p-6 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-white'} shadow-lg transform hover:scale-105 transition-transform duration-300`}
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3 }}
+                whileHover={{ scale: 1.1 }}
+                transition={{ duration: 0.0 }}
               >
                 <div className="flex items-center mb-4">
                   <div className={`p-3 ${item.color} rounded-lg mr-4`}>

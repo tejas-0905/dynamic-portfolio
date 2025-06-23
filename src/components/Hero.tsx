@@ -57,7 +57,7 @@ const Hero: React.FC<HeroProps> = ({ darkMode }) => {
               darkMode ? 'text-gray-400' : 'text-gray-600'
             }`}>
               <MapPin className="h-5 w-5" />
-              <span>Pune, Maharashtra, India</span>
+              <span>Nagpur, Maharashtra, India</span>
             </div>
 
             {/* CTA Buttons */}

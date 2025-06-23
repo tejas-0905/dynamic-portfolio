@@ -49,10 +49,11 @@ const Certifications: React.FC<CertificationsProps> = ({ darkMode }) => {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${
-            darkMode ? 'text-white' : 'text-white'
-          }`}>
-            Certifications
-          </h2>
+  darkMode ? 'text-white' : 'text-gray-900'
+}`}>
+  Certifications
+</h2>
+
           <div className="w-24 h-1 bg-blue-600 mx-auto"></div>
           <p className={`mt-4 text-lg max-w-2xl mx-auto ${
             darkMode ? 'text-gray-300' : 'text-gray-400'
@@ -149,19 +150,20 @@ const Certifications: React.FC<CertificationsProps> = ({ darkMode }) => {
         </div>
 
         <div className="mt-16 text-center relative z-10">
-          <div className={`inline-flex items-center px-6 py-3 rounded-lg ${
-            darkMode ? 'bg-gray-800' : 'bg-gray-100'
-          }`}>
-            <Award className={`h-5 w-5 mr-3 ${
-              darkMode ? 'text-blue-400' : 'text-blue-600'
-            }`} />
-            <span className={`${
-              darkMode ? 'text-gray-300' : 'text-gray-700'
-            }`}>
-              All certifications are verified and can be validated through the provided links
-            </span>
-          </div>
-        </div>
+  <div className={`inline-flex items-center px-6 py-4 rounded-lg shadow-lg ${
+    darkMode ? 'bg-gray-800' : 'bg-white'
+  }`}>
+    <Award className={`h-5 w-5 mr-3 ${
+      darkMode ? 'text-blue-400' : 'text-blue-600'
+    }`} />
+    <span className={`text-sm font-medium ${
+      darkMode ? 'text-gray-300' : 'text-gray-700'
+    }`}>
+      All certifications are verified and can be validated through the provided links
+    </span>
+  </div>
+</div>
+
       </div>
     </section>
   );

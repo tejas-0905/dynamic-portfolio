@@ -8,17 +8,17 @@ interface ExperienceProps {
 const Experience: React.FC<ExperienceProps> = ({ darkMode }) => {
   const experiences = [
     {
-      title: 'Data Analyst Intern',
-      company: 'TechCorp Solutions',
+      title: 'Data Analytics Virtual Experience Program',
+      company: 'Deloitte Australia',
       location: 'Nagpur, Maharashtra',
-      period: 'Jun 2023 - Aug 2023',
+      period: 'May 2025 - June 2025',
       description: [
-        'Analyzed large datasets using SQL and Python to identify trends and patterns',
-        'Created interactive dashboards in Tableau for executive reporting',
-        'Collaborated with cross-functional teams to define KPIs and metrics',
-        'Improved data processing efficiency by 30% through query optimization'
+        'Completed Deloitte’s virtual job simulation focused on data analytics and forensic technology.',
+        'Built a professional dashboard in Tableau to present analytical findings.',
+        'Utilized Excel to clean, classify, and analyze business data for actionable insights.',
+        'Gained experience in identifying data irregularities and supporting decision-making processes.'
       ],
-      technologies: ['SQL', 'Python', 'Tableau', 'Excel', 'MySQL']
+      technologies: ['SQL', 'Data Modelling', 'Tableau', 'Excel', 'Spreadsheets']
     },
     {
       title: 'Business Intelligence Trainee',

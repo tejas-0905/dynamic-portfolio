@@ -57,14 +57,14 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
               transition={{ duration: 0.6 }}
             >
               <div className={`p-4 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-white'} shadow-lg`}>
-                <div className="text-2xl font-bold text-blue-600 mb-2">5+</div>
+                <div className="text-2xl font-bold text-blue-600 mb-2">7+</div>
                 <div className={`text-sm ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
                   Projects Completed
                 </div>
               </div>
 
               <div className={`p-4 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-white'} shadow-lg`}>
-                <div className="text-2xl font-bold text-blue-600 mb-2">3+</div>
+                <div className="text-2xl font-bold text-blue-600 mb-2">10+</div>
                 <div className={`text-sm ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
                   Certifications
                 </div>

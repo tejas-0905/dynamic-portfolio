@@ -9,22 +9,21 @@ interface ProjectsProps {
 const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
   const projects = [
     {
-      title: 'Campus Navigation App',
-      description:
-        'A comprehensive mobile application for campus navigation with real-time location tracking, building information, and route optimization.',
-      technologies: ['React Native', 'Firebase', 'Google Maps API', 'Node.js'],
-      features: [
-        'Real-time GPS navigation',
-        'Interactive campus map',
-        'Building directory and information',
-        'Offline map support',
-      ],
-      liveUrl:
-        'https://play.google.com/store/apps/details?id=com.NavPoint1.CampusNav&hl=en',
-      githubUrl: '#',
-      icon: BarChart3,
-      category: 'Mobile Development',
-    },
+  title: 'OLA Trip Analysis Dashboard',
+  description:
+    'An interactive Power BI dashboard analyzing OLA cab trips including ride counts, distance metrics, customer behavior, and time-based trends for optimized operational insights.',
+  technologies: ['Power BI', 'DAX', 'Excel', 'Data Cleaning'],
+  features: [
+    'Trip duration and distance metrics',
+    'Ride distribution by category and payment method',
+    'Hourly and daily usage trends',
+    'Interactive slicers and KPIs for decision-making'
+  ],
+  liveUrl: '#',
+  githubUrl: 'https://github.com/tejas-0905/OLA-trip-Analysis--Power-Bi',
+  icon: BarChart3,
+  category: 'Business Intelligence'
+},
     {
       title: 'HR Analytics Dashboard',
       description:
@@ -61,50 +60,16 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
     },
   ];
 
-  const containerVariants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 40, scale: 0.95 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        type: 'spring',
-        stiffness: 80,
-        damping: 15,
-      },
-    },
-  };
-
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: 'easeOut' },
-    },
-  };
-
   return (
     <section id="projects" className="py-20">
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-      >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
-          variants={fadeInUp}
           className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
         >
           <h2
             className={`text-3xl md:text-4xl font-bold mb-4 ${
@@ -124,20 +89,21 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
         </motion.div>
 
         {/* Projects Grid */}
-        <motion.div
-          className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8"
-          variants={containerVariants}
-        >
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <motion.div
-              key={index}
-              variants={cardVariants}
-              whileHover={{ scale: 1.03 }}
-              className={`rounded-lg overflow-hidden ${
-                darkMode ? 'bg-gray-800' : 'bg-white'
-              } shadow-lg transition-all duration-300`}
-            >
-              {/* Icon/Header */}
+  key={index}
+  initial={{ opacity: 0, y: 30, scale: 0.95 }}
+  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+  whileHover={{ scale: 1.08 }}
+  transition={{ duration: 0.0, delay: index * 0.0 }}
+  viewport={{ once: true, amount: 0.2 }}
+  className={`rounded-lg overflow-hidden ${
+    darkMode ? 'bg-gray-800' : 'bg-white'
+  } shadow-xl cursor-pointer transition-transform duration-300`}
+>
+
+              {/* Icon Section */}
               <div className="relative h-48 bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center">
                 <project.icon className="h-16 w-16 text-white" />
                 <div className="absolute top-4 right-4">
@@ -151,7 +117,7 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
                 </div>
               </div>
 
-              {/* Content */}
+              {/* Card Content */}
               <div className="p-6">
                 <h3
                   className={`text-xl font-semibold mb-3 ${
@@ -201,7 +167,7 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
                   ))}
                 </div>
 
-                {/* Buttons */}
+                {/* Action Buttons */}
                 <div className="flex space-x-3">
                   {project.liveUrl !== '#' && (
                     <a
@@ -233,12 +199,15 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
               </div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
 
-        {/* View More */}
+        {/* GitHub CTA */}
         <motion.div
-          variants={fadeInUp}
           className="text-center mt-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
         >
           <a
             href="https://github.com/tejas-0905"
@@ -254,7 +223,7 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
             View More Projects on GitHub
           </a>
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 };

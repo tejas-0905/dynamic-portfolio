@@ -36,9 +36,9 @@ const Hero: React.FC<HeroProps> = ({ darkMode }) => {
                 I'm a{' '}
                 <Typewriter
                   texts={roles}
-                  speed={100}
-                  deleteSpeed={50}
-                  pauseTime={2000}
+                  speed={150}
+                  deleteSpeed={30}
+                  pauseTime={1500}
                   className="text-blue-600 font-semibold"
                 />
               </div>

@@ -91,8 +91,8 @@ const Experience: React.FC<ExperienceProps> = ({ darkMode }) => {
               <motion.div
                 key={index}
                 className="relative flex flex-col md:flex-row items-start"
-                initial={{ y: 30, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
+                initial={{ y: 30, opacity: 0, scale: 0.95 }}
+                whileInView={{ y: 0, opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
                 viewport={{ once: true }}
               >
@@ -105,20 +105,26 @@ const Experience: React.FC<ExperienceProps> = ({ darkMode }) => {
                   viewport={{ once: true }}
                 ></motion.div>
 
-                {/* Card Content */}
+                {/* Card */}
                 <motion.div
                   className="md:ml-20 w-full"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.2 + 0.1 }}
-                  viewport={{ once: true }}
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ type: 'spring', stiffness: 200 }}
                 >
-                  <div
-                    className={`p-6 rounded-lg ${
-                      darkMode ? 'bg-gray-700' : 'bg-white'
-                    } shadow-lg hover:shadow-xl transition-shadow duration-300`}
+                  <motion.div
+                    className={`p-6 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-white'} shadow-lg hover:shadow-2xl transition-all duration-300`}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.2 + 0.1 }}
+                    viewport={{ once: true }}
                   >
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
+                    <motion.div
+                      className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4"
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.4, delay: index * 0.25 }}
+                      viewport={{ once: true }}
+                    >
                       <div>
                         <h3 className={`text-xl font-semibold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                           {exp.title}
@@ -135,14 +141,14 @@ const Experience: React.FC<ExperienceProps> = ({ darkMode }) => {
                           <span className="text-sm">{exp.jobType}</span>
                         </div>
                       </div>
-                    </div>
+                    </motion.div>
 
-                    {/* Description */}
+                    {/* Description List */}
                     <motion.ul
                       className={`space-y-2 mb-4 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      transition={{ duration: 0.5, delay: 0.2 }}
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.3 }}
                       viewport={{ once: true }}
                     >
                       {exp.description.map((item, i) => (
@@ -153,12 +159,12 @@ const Experience: React.FC<ExperienceProps> = ({ darkMode }) => {
                       ))}
                     </motion.ul>
 
-                    {/* Tech Tags */}
+                    {/* Technologies */}
                     <motion.div
                       className="flex flex-wrap gap-2"
                       initial={{ opacity: 0, y: 10 }}
                       whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.6, delay: 0.3 }}
+                      transition={{ duration: 0.4, delay: index * 0.35 }}
                       viewport={{ once: true }}
                     >
                       {exp.technologies.map((tech) => (
@@ -172,7 +178,7 @@ const Experience: React.FC<ExperienceProps> = ({ darkMode }) => {
                         </span>
                       ))}
                     </motion.div>
-                  </div>
+                  </motion.div>
                 </motion.div>
               </motion.div>
             ))}

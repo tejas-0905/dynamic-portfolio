@@ -1,5 +1,7 @@
 import React from 'react';
 import { Code, Database, Palette, BarChart3 } from 'lucide-react';
+import { motion } from 'framer-motion';
+
 
 interface SkillsProps {
   darkMode: boolean;

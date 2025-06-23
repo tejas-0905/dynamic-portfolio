@@ -63,7 +63,7 @@ const Hero: React.FC<HeroProps> = ({ darkMode }) => {
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4">
               <a
-                href="/resume.pdf"
+                href="https://drive.google.com/drive/u/0/home"
                 download
                 className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
               >
@@ -125,27 +125,28 @@ const Hero: React.FC<HeroProps> = ({ darkMode }) => {
             </div>
           </div>
 
-          {/* Profile Image  */}
-          <div className="flex justify-center lg:justify-end animate-fade-in-right">
-            <div className="relative lg:ml-[-68px]"> {/* <-- Shift image to the left on large screens */}
-              <div className="w-80 h-80 rounded-full overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-300">
-                <img
-                  src="/IMG-20250616-WA0044.jpg"
-                  alt="Tejas Jiddewar"
-                  className="w-full h-full object-cover"
-                />
-              </div>
+          {/* Profile Image - moved toward center */}
+<div className="flex justify-center lg:justify-center animate-fade-in-right">
+  <div className="relative">
+    <div className="w-96 h-96 rounded-full overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-300">
+      <img
+        src="/IMG-20250616-WA0044.jpg"
+        alt="Tejas Jiddewar"
+        className="w-full h-full object-cover"
+      />
+    </div>
 
-              {/* Floating Elements */}
-              <div className="absolute -top-4 -right-4 w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center animate-bounce">
-                <span className="text-white font-bold text-sm">Data</span>
-              </div>
+    {/* Floating Elements */}
+    <div className="absolute -top-4 -right-4 w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center animate-bounce">
+      <span className="text-white font-bold text-sm">Data</span>
+    </div>
 
-              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center animate-pulse">
-                <span className="text-white font-bold text-xs">SQL</span>
-              </div>
-            </div>
-          </div>
+    <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center animate-pulse">
+      <span className="text-white font-bold text-xs">SQL</span>
+    </div>
+  </div>
+</div>
+
         </div>
       </div>
     </section>

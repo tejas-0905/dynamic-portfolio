@@ -10,7 +10,7 @@ const Experience: React.FC<ExperienceProps> = ({ darkMode }) => {
     {
       title: 'Data Analyst Intern',
       company: 'TechCorp Solutions',
-      location: 'Pune, Maharashtra',
+      location: 'Nagpur, Maharashtra',
       period: 'Jun 2023 - Aug 2023',
       description: [
         'Analyzed large datasets using SQL and Python to identify trends and patterns',
@@ -23,7 +23,7 @@ const Experience: React.FC<ExperienceProps> = ({ darkMode }) => {
     {
       title: 'Business Intelligence Trainee',
       company: 'DataViz Analytics',
-      location: 'Mumbai, Maharashtra',
+      location: 'Nagpur, Maharashtra',
       period: 'Jan 2023 - May 2023',
       description: [
         'Developed Power BI reports and dashboards for sales and marketing teams',
@@ -36,7 +36,7 @@ const Experience: React.FC<ExperienceProps> = ({ darkMode }) => {
     {
       title: 'Data Analytics Project Lead',
       company: 'University Research Lab',
-      location: 'Pune, Maharashtra',
+      location: 'Nagpur, Maharashtra',
       period: 'Sep 2022 - Dec 2022',
       description: [
         'Led a team of 4 students in analyzing campus survey data',

@@ -60,7 +60,7 @@ const Skills: React.FC<SkillsProps> = ({ darkMode }) => {
       viewport={{ once: true }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Heading */}
+        {/* Section Heading */}
         <motion.div
           className="text-center mb-16"
           initial={{ y: 20, opacity: 0 }}
@@ -72,9 +72,15 @@ const Skills: React.FC<SkillsProps> = ({ darkMode }) => {
             Skills & Expertise
           </h2>
           <div className="w-24 h-1 bg-blue-600 mx-auto"></div>
-          <p className={`mt-4 text-lg max-w-2xl mx-auto ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+          <motion.p
+            className={`mt-4 text-lg max-w-2xl mx-auto ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
             A comprehensive toolkit for data analysis, visualization, and business intelligence
-          </p>
+          </motion.p>
         </motion.div>
 
         {/* Skill Categories */}
@@ -130,7 +136,7 @@ const Skills: React.FC<SkillsProps> = ({ darkMode }) => {
           ))}
         </div>
 
-        {/* Additional Skills */}
+        {/* Additional Technologies */}
         <motion.div
           className="mt-12"
           initial={{ y: 40, opacity: 0 }}

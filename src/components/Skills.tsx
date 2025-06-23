@@ -156,7 +156,7 @@ const Skills: React.FC<SkillsProps> = ({ darkMode }) => {
                 items: ['Figma']
               },
               {
-                category: 'BI & Visualization',
+                category: 'Visualization Tool',
                 items: ['Power BI', 'Tableau', 'Microsoft Excel'],
                 center: true
               }

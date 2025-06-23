@@ -29,7 +29,7 @@ const Hero: React.FC<HeroProps> = ({ darkMode }) => {
                   Tejas Jiddewar
                 </span>
               </h1>
-              
+
               <div className={`text-xl md:text-2xl ${
                 darkMode ? 'text-gray-300' : 'text-gray-600'
               }`}>
@@ -42,7 +42,7 @@ const Hero: React.FC<HeroProps> = ({ darkMode }) => {
                   className="text-blue-600 font-semibold"
                 />
               </div>
-              
+
               <p className={`text-lg max-w-2xl ${
                 darkMode ? 'text-gray-400' : 'text-gray-600'
               }`}>
@@ -70,7 +70,7 @@ const Hero: React.FC<HeroProps> = ({ darkMode }) => {
                 <Download className="h-5 w-5 mr-2" />
                 Download Resume
               </a>
-              
+
               <a
                 href="#contact"
                 className={`inline-flex items-center px-6 py-3 rounded-lg border-2 transition-all duration-200 transform hover:scale-105 ${
@@ -98,7 +98,7 @@ const Hero: React.FC<HeroProps> = ({ darkMode }) => {
               >
                 <Github className="h-6 w-6" />
               </a>
-              
+
               <a
                 href="https://www.linkedin.com/in/tejas-jiddewar"
                 target="_blank"
@@ -111,7 +111,7 @@ const Hero: React.FC<HeroProps> = ({ darkMode }) => {
               >
                 <Linkedin className="h-6 w-6" />
               </a>
-              
+
               <a
                 href="mailto:tejasjiddewar955@gmail.com"
                 className={`p-3 rounded-full transition-all duration-200 transform hover:scale-110 ${
@@ -125,9 +125,9 @@ const Hero: React.FC<HeroProps> = ({ darkMode }) => {
             </div>
           </div>
 
-          {/* Profile Image */}
+          {/* Profile Image  */}
           <div className="flex justify-center lg:justify-end animate-fade-in-right">
-            <div className="relative">
+            <div className="relative lg:ml-[-68px]"> {/* <-- Shift image to the left on large screens */}
               <div className="w-80 h-80 rounded-full overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-300">
                 <img
                   src="/IMG-20250616-WA0044.jpg"
@@ -135,12 +135,12 @@ const Hero: React.FC<HeroProps> = ({ darkMode }) => {
                   className="w-full h-full object-cover"
                 />
               </div>
-              
+
               {/* Floating Elements */}
               <div className="absolute -top-4 -right-4 w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center animate-bounce">
                 <span className="text-white font-bold text-sm">Data</span>
               </div>
-              
+
               <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center animate-pulse">
                 <span className="text-white font-bold text-xs">SQL</span>
               </div>

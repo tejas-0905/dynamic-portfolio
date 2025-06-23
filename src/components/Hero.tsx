@@ -63,7 +63,7 @@ const Hero: React.FC<HeroProps> = ({ darkMode }) => {
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4">
               <a
-                href="https://drive.google.com/drive/u/0/home"
+                href=""
                 download
                 className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
               >

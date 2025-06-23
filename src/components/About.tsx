@@ -1,6 +1,10 @@
 import React from 'react';
 import { User, Target, Heart } from 'lucide-react';
 import { motion } from 'framer-motion';
+import CountUp from 'react-countup';
+import { useInView } from 'react-intersection-observer';
+
+
 
 interface AboutProps {
   darkMode: boolean;
@@ -50,27 +54,35 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
             </div>
 
             {/* Quick Stats */}
-            <motion.div
+          <motion.div
               className="grid grid-cols-2 gap-6 mt-8"
               initial={{ scale: 0.9, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.6 }}
-            >
-              <div className={`p-4 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-white'} shadow-lg`}>
-                <div className="text-2xl font-bold text-blue-600 mb-2">7+</div>
-                <div className={`text-sm ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                  Projects Completed
-                </div>
-              </div>
-
-              <div className={`p-4 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-white'} shadow-lg`}>
-                <div className="text-2xl font-bold text-blue-600 mb-2">10+</div>
-                <div className={`text-sm ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                  Certifications
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
+              transition={{ duration: 0.0 }}
+>
+              {/* Use InView hook for each card */}
+              {[
+              { label: "Projects Completed", value: 7 },
+              { label: "Certifications", value: 10 }
+               ].map((item, index) => {
+                    const { ref, inView } = useInView({ triggerOnce: true });
+                        return (
+                            <div
+                               ref={ref}
+                              key={index}
+                            className={`p-4 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-white'} shadow-lg`}
+                              >
+                            <div className="text-2xl font-bold text-blue-600 mb-2">
+                             {inView && <CountUp end={item.value} duration={2} />}+
+                             </div>
+                            <div className={`text-sm ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                          {item.label}
+                          </div>
+                           </div>
+                            );
+                           })}
+                            </motion.div>
+               </motion.div>
 
           {/* Values Cards */}
           <motion.div

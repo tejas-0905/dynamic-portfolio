@@ -1,5 +1,5 @@
 import React from 'react';
-import { GraduationCap, Calendar, MapPin, Award, AlignCenter } from 'lucide-react';
+import { GraduationCap, Calendar, MapPin, Award } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 interface EducationProps {

@@ -22,31 +22,31 @@ const Experience: React.FC<ExperienceProps> = ({ darkMode }) => {
       technologies: ['SQL', 'Data Modelling', 'Tableau', 'Excel', 'Spreadsheets']
     },
     {
-      title: 'Business Intelligence Trainee',
-      company: 'DataViz Analytics',
-      jobType: 'Onsite Internship',
-      period: 'Jan 2023 - May 2023',
+      title: 'Strategic Data Analytics Intern',
+      company: 'Tata Group',
+      jobType: 'Virtual Internship',
+      period: 'April 2025 - May 2025',
       description: [
-        'Developed Power BI reports and dashboards for sales and marketing teams',
-        'Performed data cleaning and transformation using Power Query',
-        'Assisted in creating data models and establishing relationships',
-        'Presented findings to stakeholders and provided actionable recommendations'
+        'Executed AI-powered data analysis and strategic planning for Tata iQ’s Financial Services division.',
+        'Conducted EDA using GenAI to assess data quality, detect risk patterns, and inform predictive modeling',
+        'Proposed a no-code AI framework for customer delinquency risk using model logic and evaluation metrics.',
+        'Designed an AI-driven collections strategy integrating automation, ethical AI principles, and compliance.'
       ],
-      technologies: ['Power BI', 'DAX', 'Power Query', 'SQL Server', 'Excel']
-    },
-    {
-      title: 'Data Analytics Project Lead',
-      company: 'University Research Lab',
-      jobType: 'Onsite Internship',
-      period: 'Sep 2022 - Dec 2022',
-      description: [
-        'Led a team of 4 students in analyzing campus survey data',
-        'Implemented statistical analysis using R and Python',
-        'Created comprehensive reports with visualizations and insights',
-        'Presented findings to university administration for policy decisions'
-      ],
-      technologies: ['R', 'Python', 'SPSS', 'Matplotlib', 'Seaborn']
+      technologies: ['Exploratory Data Analysis (EDA)', 'AI Strategy Design', 'Data Interpretation', 'Strategic Thinking', 'Handling Missing Data','Ethical Reasoning']
     }
+    // {
+    //   title: 'Data Analytics Project Lead',
+    //   company: 'University Research Lab',
+    //   jobType: 'Onsite Internship',
+    //   period: 'Sep 2022 - Dec 2022',
+    //   description: [
+    //     'Led a team of 4 students in analyzing campus survey data',
+    //     'Implemented statistical analysis using R and Python',
+    //     'Created comprehensive reports with visualizations and insights',
+    //     'Presented findings to university administration for policy decisions'
+    //   ],
+    //   technologies: ['R', 'Python', 'SPSS', 'Matplotlib', 'Seaborn']
+    // }
   ];
 
   return (

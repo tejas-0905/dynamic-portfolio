@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Github, Linkedin, Send, CheckCircle } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 interface ContactProps {
   darkMode: boolean;
@@ -23,7 +24,6 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate form submission
     setIsSubmitted(true);
     setTimeout(() => {
       setIsSubmitted(false);
@@ -41,13 +41,13 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
     {
       icon: Phone,
       label: 'Phone',
-      value: '+91 9876543210',
-      href: 'tel:+919876543210'
+      value: '+91 7758909795',
+      href: 'tel:+917758909795'
     },
     {
       icon: MapPin,
       label: 'Location',
-      value: 'Pune, Maharashtra, India',
+      value: 'Nagpur, Maharashtra, India',
       href: '#'
     }
   ];
@@ -76,7 +76,13 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
   return (
     <section id="contact" className={`py-20 ${darkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${
             darkMode ? 'text-white' : 'text-gray-900'
           }`}>
@@ -88,11 +94,16 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
           }`}>
             Let's discuss how we can work together to turn your data into actionable insights
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Information */}
-          <div className="space-y-8">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="space-y-8"
+          >
             <div>
               <h3 className={`text-2xl font-semibold mb-6 ${
                 darkMode ? 'text-white' : 'text-gray-900'
@@ -102,13 +113,11 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
               <p className={`text-lg mb-8 ${
                 darkMode ? 'text-gray-300' : 'text-gray-600'
               }`}>
-                I'm always interested in discussing new opportunities, 
-                collaborating on data projects, or simply connecting with 
-                fellow data enthusiasts. Feel free to reach out!
+                I'm always interested in discussing new opportunities, collaborating on data projects,
+                or simply connecting with fellow data enthusiasts. Feel free to reach out!
               </p>
             </div>
 
-            {/* Contact Details */}
             <div className="space-y-4">
               {contactInfo.map((info, index) => (
                 <div key={index} className="flex items-center">
@@ -142,8 +151,12 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
               ))}
             </div>
 
-            {/* Social Links */}
-            <div>
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
               <h4 className={`text-lg font-semibold mb-4 ${
                 darkMode ? 'text-white' : 'text-gray-900'
               }`}>
@@ -151,29 +164,35 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
               </h4>
               <div className="flex space-x-4">
                 {socialLinks.map((social, index) => (
-                  <a
+                  <motion.a
                     key={index}
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
+                    whileHover={{ scale: 1.15 }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={{ type: 'spring', stiffness: 300 }}
                     className={`p-3 rounded-full transition-all duration-200 transform hover:scale-110 ${
-                      darkMode 
-                        ? 'bg-gray-700 text-gray-300 hover:bg-gray-600 hover:text-white' 
+                      darkMode
+                        ? 'bg-gray-700 text-gray-300 hover:bg-gray-600 hover:text-white'
                         : 'bg-white text-gray-600 hover:bg-gray-100'
                     } ${social.color} shadow-lg`}
                     title={social.label}
                   >
                     <social.icon className="h-6 w-6" />
-                  </a>
+                  </motion.a>
                 ))}
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
-          {/* Contact Form */}
-          <div className={`p-8 rounded-lg ${
-            darkMode ? 'bg-gray-700' : 'bg-white'
-          } shadow-lg`}>
+          <motion.div
+            className={`p-8 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-white'} shadow-lg`}
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
             {isSubmitted ? (
               <div className="text-center py-12">
                 <CheckCircle className="h-16 w-16 text-green-600 mx-auto mb-4" />
@@ -202,14 +221,14 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
                       onChange={handleChange}
                       required
                       className={`w-full px-4 py-3 rounded-lg border transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-600 ${
-                        darkMode 
-                          ? 'bg-gray-600 border-gray-500 text-white placeholder-gray-400' 
+                        darkMode
+                          ? 'bg-gray-600 border-gray-500 text-white placeholder-gray-400'
                           : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
                       }`}
                       placeholder="Your Name"
                     />
                   </div>
-                  
+
                   <div>
                     <label className={`block text-sm font-medium mb-2 ${
                       darkMode ? 'text-gray-300' : 'text-gray-700'
@@ -223,8 +242,8 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
                       onChange={handleChange}
                       required
                       className={`w-full px-4 py-3 rounded-lg border transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-600 ${
-                        darkMode 
-                          ? 'bg-gray-600 border-gray-500 text-white placeholder-gray-400' 
+                        darkMode
+                          ? 'bg-gray-600 border-gray-500 text-white placeholder-gray-400'
                           : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
                       }`}
                       placeholder="your.email@example.com"
@@ -245,8 +264,8 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
                     onChange={handleChange}
                     required
                     className={`w-full px-4 py-3 rounded-lg border transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-600 ${
-                      darkMode 
-                        ? 'bg-gray-600 border-gray-500 text-white placeholder-gray-400' 
+                      darkMode
+                        ? 'bg-gray-600 border-gray-500 text-white placeholder-gray-400'
                         : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
                     }`}
                     placeholder="What's this about?"
@@ -266,8 +285,8 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
                     required
                     rows={6}
                     className={`w-full px-4 py-3 rounded-lg border transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-600 resize-none ${
-                      darkMode 
-                        ? 'bg-gray-600 border-gray-500 text-white placeholder-gray-400' 
+                      darkMode
+                        ? 'bg-gray-600 border-gray-500 text-white placeholder-gray-400'
                         : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
                     }`}
                     placeholder="Tell me about your project or how I can help..."
@@ -283,7 +302,7 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
                 </button>
               </form>
             )}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

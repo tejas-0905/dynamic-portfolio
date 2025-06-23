@@ -128,7 +128,7 @@ const Hero: React.FC<HeroProps> = ({ darkMode }) => {
           {/* Profile Image - moved toward center */}
 <div className="flex justify-center lg:justify-center animate-fade-in-right">
   <div className="relative">
-    <div className="w-96 h-96 rounded-full overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-300">
+    <div className="w-80 h-80 rounded-full overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-300">
       <img
         src="/IMG-20250616-WA0044.jpg"
         alt="Tejas Jiddewar"

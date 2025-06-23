@@ -13,8 +13,10 @@ const Skills: React.FC<SkillsProps> = ({ darkMode }) => {
       icon: Code,
       skills: [
         { name: 'SQL', level: 90 },
-        { name: 'Python', level: 85 },
-        { name: 'R', level: 75 },
+        { name: 'HTML', level: 85 },
+        { name: 'CSS', level: 80 },
+        { name: 'Java', level: 75 },
+        { name: 'Python', level: 70},
         { name: 'JavaScript', level: 70 }
       ]
     },
@@ -24,7 +26,6 @@ const Skills: React.FC<SkillsProps> = ({ darkMode }) => {
       skills: [
         { name: 'MySQL', level: 90 },
         { name: 'PostgreSQL', level: 85 },
-        { name: 'MongoDB', level: 75 },
         { name: 'Oracle', level: 70 }
       ]
     },
@@ -39,7 +40,7 @@ const Skills: React.FC<SkillsProps> = ({ darkMode }) => {
       ]
     },
     {
-      title: 'Analytics & ML',
+      title: 'Frameworks ',
       icon: BarChart3,
       skills: [
         { name: 'Statistical Analysis', level: 85 },
@@ -132,9 +133,70 @@ const Skills: React.FC<SkillsProps> = ({ darkMode }) => {
                   </motion.div>
                 ))}
               </div>
+              
             </motion.div>
+          ))}         
+        </div>
+        <motion.div
+  className="mt-16"
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8 }}
+  viewport={{ once: true }}
+>
+  <h3 className={`text-2xl font-semibold text-center mb-6 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+    Tools & Frameworks I've Worked With
+  </h3>
+
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+    {[
+      {
+        category: 'Development Environments',
+        items: ['Eclipse', 'IntelliJ IDEA', 'VS Code']
+      },
+      {
+        category: 'Build & Versioning',
+        items: ['Maven', 'GitHub']
+      },
+      {
+        category: 'BI & Visualization',
+        items: ['Power BI', 'Tableau', 'Microsoft Excel']
+      },
+      {
+        category: 'UI/UX & Design',
+        items: ['Figma']
+      }
+    ].map((group, i) => (
+      <motion.div
+        key={group.category}
+        className={`p-4 rounded-lg shadow ${
+          darkMode ? 'bg-gray-800 text-gray-200' : 'bg-white text-gray-800'
+        }`}
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: i * 0.2, duration: 0.6 }}
+        viewport={{ once: true }}
+      >
+        <h4 className="text-lg font-semibold mb-2">{group.category}</h4>
+        <div className="flex flex-wrap gap-2">
+          {group.items.map((tool) => (
+            <span
+              key={tool}
+              className={`px-3 py-1 rounded-full text-sm font-medium transition-all duration-200 ${
+                darkMode
+                  ? 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+                  : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
+              }`}
+            >
+              {tool}
+            </span>
           ))}
         </div>
+      </motion.div>
+    ))}
+  </div>
+</motion.div>
+
 
         {/* Additional Technologies */}
         <motion.div

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Award, ExternalLink, Calendar } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 interface CertificationsProps {
   darkMode: boolean;
@@ -8,46 +9,53 @@ interface CertificationsProps {
 const Certifications: React.FC<CertificationsProps> = ({ darkMode }) => {
   const certifications = [
     {
-      title: 'Google Data Analytics Professional Certificate',
-      issuer: 'Google (via Coursera)',
-      date: 'December 2023',
-      credentialId: '92UN07HIWKUY',
-      verifyUrl: 'https://www.coursera.org/account/accomplishments/verify/92UN07HIWKUY',
-      description: 'Comprehensive program covering data analysis process, tools, and techniques including spreadsheets, SQL, R programming, and Tableau.',
-      skills: ['Data Analysis', 'SQL', 'R Programming', 'Tableau', 'Data Visualization']
-    },
+  title: 'Data Modeling with Power BI: Advanced DAX Calculations',
+  issuer: 'Coursera Project Network',
+  date: 'May 2025',
+  credentialId: '92UN07HIWKUY', // Optional, since not specified
+  verifyUrl: 'https://www.coursera.org/account/accomplishments/verify/92UN07HIWKUY', // Optional, if a link is available, you can paste it here
+  description:'Advanced DAX project in Power BI focusing on financial data modeling, complex measures, and time-based analysis using table relationships and calculated columns.',
+  skills: [
+    'Power BI','Data Modeling','DAX (Data Analysis Expressions)','Data Visualization']
+},
+
     {
-      title: 'IBM Data Science Professional Certificate',
-      issuer: 'IBM (via Coursera)',
-      date: 'November 2023',
+      title: 'HTML, CSS, and Javascript for Web Developers',
+      issuer: 'Johns Hopkins University',
+      date: 'September 2024',
       credentialId: 'R26SL9BVY3KJ',
       verifyUrl: 'https://www.coursera.org/account/accomplishments/verify/R26SL9BVY3KJ',
-      description: 'Hands-on experience with data science tools and techniques including Python, SQL, machine learning, and data visualization.',
-      skills: ['Python', 'Machine Learning', 'Data Science', 'SQL', 'Jupyter Notebooks']
+      description: 'Completed a hands-on course on building responsive and interactive web applications using HTML, CSS, and JavaScript, with a focus on front-end development and cross-platform design.',
+      skills: ['HTML', 'CSS', 'Javascript', 'Responsive Web Design', 'Front-End Development']
     },
     {
-      title: 'Microsoft Power BI Data Analyst Associate',
-      issuer: 'Microsoft (via Coursera)',
-      date: 'October 2023',
+      title: 'Dynamic Dashboards with Tableau: Advanced Sales Analysis',
+      issuer: 'Coursera Project Network',
+      date: 'May 2025',
       credentialId: 'U9KJPXPGPLEN',
       verifyUrl: 'https://www.coursera.org/account/accomplishments/verify/U9KJPXPGPLEN',
-      description: 'Expertise in designing and building scalable data models, cleaning and transforming data, and enabling advanced analytics.',
-      skills: ['Power BI', 'DAX', 'Power Query', 'Data Modeling', 'Business Intelligence']
+      description: 'Hands-on project focused on creating interactive Tableau dashboards using calculated fields and LOD expressions for advanced sales data analysis and visualization.',
+      skills: ['Tableau', 'DAX', 'Power Query', 'Data Modeling', 'Excel']
     }
   ];
 
   return (
-    <section id="certifications" className="py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section
+  id="certifications"
+  className={`py-20 ${darkMode ? 'bg-gray-900' : 'bg-gray-100'}`}
+>
+      <div className="absolute inset-0 opacity-30 pointer-events-none bg-[radial-gradient(circle_at_30%_30%,#3b82f6_0%,transparent_25%),radial-gradient(circle_at_70%_70%,#9333ea_0%,transparent_25%)] animate-pulse"></div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${
-            darkMode ? 'text-white' : 'text-gray-900'
+            darkMode ? 'text-white' : 'text-white'
           }`}>
             Certifications
           </h2>
           <div className="w-24 h-1 bg-blue-600 mx-auto"></div>
           <p className={`mt-4 text-lg max-w-2xl mx-auto ${
-            darkMode ? 'text-gray-400' : 'text-gray-600'
+            darkMode ? 'text-gray-300' : 'text-gray-400'
           }`}>
             Professional certifications demonstrating expertise in data analytics and business intelligence
           </p>
@@ -55,24 +63,30 @@ const Certifications: React.FC<CertificationsProps> = ({ darkMode }) => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
           {certifications.map((cert, index) => (
-            <div
+            <motion.div
               key={index}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ scale: 1.09 }}
+              transition={{ duration: 0.0, delay: index * 0.0 }}
+              viewport={{ once: true }}
               className={`rounded-lg overflow-hidden ${
                 darkMode ? 'bg-gray-800' : 'bg-white'
-              } shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 animate-fade-in-up`}
-              style={{ animationDelay: `${index * 0.1}s` }}
+              } shadow-xl hover:shadow-2xl transition-all duration-300 backdrop-blur-lg border border-blue-500`}
             >
               {/* Header */}
               <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-6 text-white">
                 <div className="flex items-center justify-between mb-4">
-                  <Award className="h-8 w-8" />
+                  <Award className="h-8 w-8 animate-bounce" />
                   <div className="flex items-center text-sm">
                     <Calendar className="h-4 w-4 mr-2" />
                     {cert.date}
                   </div>
                 </div>
-                <h3 className="text-xl font-semibold mb-2">{cert.title}</h3>
-                <p className="text-blue-100">{cert.issuer}</p>
+                <h3 className="text-xl font-semibold mb-2 tracking-wide">
+                  {cert.title}
+                </h3>
+                <p className="text-blue-100 text-sm italic">{cert.issuer}</p>
               </div>
 
               {/* Content */}
@@ -83,9 +97,8 @@ const Certifications: React.FC<CertificationsProps> = ({ darkMode }) => {
                   {cert.description}
                 </p>
 
-                {/* Credential ID */}
                 <div className={`mb-4 p-3 rounded-lg ${
-                  darkMode ? 'bg-gray-700' : 'bg-gray-50'
+                  darkMode ? 'bg-gray-700' : 'bg-gray-100'
                 }`}>
                   <div className={`text-xs font-medium mb-1 ${
                     darkMode ? 'text-gray-400' : 'text-gray-500'
@@ -99,7 +112,6 @@ const Certifications: React.FC<CertificationsProps> = ({ darkMode }) => {
                   </div>
                 </div>
 
-                {/* Skills */}
                 <div className="mb-4">
                   <h4 className={`text-sm font-semibold mb-2 ${
                     darkMode ? 'text-gray-300' : 'text-gray-700'
@@ -111,8 +123,8 @@ const Certifications: React.FC<CertificationsProps> = ({ darkMode }) => {
                       <span
                         key={skill}
                         className={`px-2 py-1 rounded text-xs font-medium ${
-                          darkMode 
-                            ? 'bg-gray-700 text-gray-300' 
+                          darkMode
+                            ? 'bg-gray-700 text-gray-300'
                             : 'bg-gray-100 text-gray-700'
                         }`}
                       >
@@ -122,7 +134,6 @@ const Certifications: React.FC<CertificationsProps> = ({ darkMode }) => {
                   </div>
                 </div>
 
-                {/* Verify Button */}
                 <a
                   href={cert.verifyUrl}
                   target="_blank"
@@ -133,12 +144,11 @@ const Certifications: React.FC<CertificationsProps> = ({ darkMode }) => {
                   Verify Certificate
                 </a>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
-        {/* Additional Info */}
-        <div className="mt-16 text-center">
+        <div className="mt-16 text-center relative z-10">
           <div className={`inline-flex items-center px-6 py-3 rounded-lg ${
             darkMode ? 'bg-gray-800' : 'bg-gray-100'
           }`}>

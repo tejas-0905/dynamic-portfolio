@@ -36,9 +36,9 @@ const Hero: React.FC<HeroProps> = ({ darkMode }) => {
                 I'm a{' '}
                 <Typewriter
                   texts={roles}
-                  speed={150}
-                  deleteSpeed={30}
-                  pauseTime={1500}
+                  speed={100}
+                  deleteSpeed={50}
+                  pauseTime={2000}
                   className="text-blue-600 font-semibold"
                 />
               </div>
@@ -57,7 +57,7 @@ const Hero: React.FC<HeroProps> = ({ darkMode }) => {
               darkMode ? 'text-gray-400' : 'text-gray-600'
             }`}>
               <MapPin className="h-5 w-5" />
-              <span>Nagpur, Maharashtra, India</span>
+              <span>Pune, Maharashtra, India</span>
             </div>
 
             {/* CTA Buttons */}

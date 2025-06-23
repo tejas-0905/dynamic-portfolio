@@ -137,18 +137,26 @@ const Skills: React.FC<SkillsProps> = ({ darkMode }) => {
             </motion.div>
           ))}         
         </div>
-        <motion.div
-  className="mt-16"
+        
+
+
+
+       <motion.div
+  className="mt-16 flex flex-col items-center justify-center"
   initial={{ opacity: 0, y: 20 }}
   whileInView={{ opacity: 1, y: 0 }}
   transition={{ duration: 0.8 }}
   viewport={{ once: true }}
 >
-  <h3 className={`text-2xl font-semibold text-center mb-6 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+  <h3
+    className={`text-2xl font-semibold text-center mb-6 ${
+      darkMode ? 'text-white' : 'text-gray-900'
+    }`}
+  >
     Tools & Frameworks I've Worked With
   </h3>
 
-  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+  <div className="w-full max-w-5xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-4">
     {[
       {
         category: 'Development Environments',
@@ -164,78 +172,40 @@ const Skills: React.FC<SkillsProps> = ({ darkMode }) => {
       },
       {
         category: 'UI/UX & Design',
-        items: ['Figma']
+        items: ['Figma'],
+        center: true // Center align Figma card
       }
     ].map((group, i) => (
       <motion.div
         key={group.category}
         className={`p-4 rounded-lg shadow ${
           darkMode ? 'bg-gray-800 text-gray-200' : 'bg-white text-gray-800'
-        }`}
+        } ${group.center ? 'col-span-full flex justify-center' : ''}`}
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: i * 0.2, duration: 0.6 }}
         viewport={{ once: true }}
       >
-        <h4 className="text-lg font-semibold mb-2">{group.category}</h4>
-        <div className="flex flex-wrap gap-2">
-          {group.items.map((tool) => (
-            <span
-              key={tool}
-              className={`px-3 py-1 rounded-full text-sm font-medium transition-all duration-200 ${
-                darkMode
-                  ? 'bg-gray-700 text-gray-300 hover:bg-gray-600'
-                  : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
-              }`}
-            >
-              {tool}
-            </span>
-          ))}
+        <div className="text-center">
+          <h4 className="text-lg font-semibold mb-2">{group.category}</h4>
+          <div className="flex flex-wrap justify-center gap-2">
+            {group.items.map((tool) => (
+              <span
+                key={tool}
+                className={`px-3 py-1 rounded-full text-sm font-medium transition-all duration-200 ${
+                  darkMode
+                    ? 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+                    : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
+                }`}
+              >
+                {tool}
+              </span>
+            ))}
+          </div>
         </div>
       </motion.div>
     ))}
   </div>
 </motion.div>
-
-
-        {/* Additional Technologies */}
-        <motion.div
-          className="mt-12"
-          initial={{ y: 40, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <h3 className={`text-2xl font-semibold text-center mb-8 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-            Additional Technologies
-          </h3>
-
-          <div className="flex flex-wrap justify-center gap-4">
-            {[
-              'Git', 'Docker', 'AWS', 'Google Analytics', 'SPSS', 'SAS',
-              'Jupyter', 'Apache Spark', 'Hadoop', 'ETL', 'Data Warehousing',
-              'Business Intelligence', 'Statistical Modeling', 'A/B Testing'
-            ].map((tech, index) => (
-              <motion.span
-                key={tech}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 hover:scale-105 ${
-                  darkMode
-                    ? 'bg-gray-700 text-gray-300 hover:bg-gray-600'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
-                initial={{ scale: 0.9, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.3, delay: index * 0.05 }}
-                viewport={{ once: true }}
-              >
-                {tech}
-              </motion.span>
-            ))}
-          </div>
-        </motion.div>
-      </div>
-    </motion.section>
-  );
-};
 
 export default Skills;

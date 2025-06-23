@@ -1,5 +1,5 @@
 import React from 'react';
-import { Code, Database, Palette, BarChart3 } from 'lucide-react';
+import { Code, Database, Palette, BarChart3, AlignCenter } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 interface SkillsProps {
@@ -32,23 +32,24 @@ const Skills: React.FC<SkillsProps> = ({ darkMode }) => {
     {
       title: 'Visualization Tools',
       icon: Palette,
+      AlignCenter: true,
       skills: [
         { name: 'Tableau', level: 95 },
         { name: 'Power BI', level: 90 },
         { name: 'Excel', level: 95 },
         { name: 'Matplotlib', level: 80 }
       ]
-    },
-    {
-      title: 'Frameworks',
-      icon: BarChart3,
-      skills: [
-        { name: 'Statistical Analysis', level: 85 },
-        { name: 'Data Mining', level: 80 },
-        { name: 'Machine Learning', level: 75 },
-        { name: 'Predictive Modeling', level: 70 }
-      ]
     }
+    // {
+    //   title: 'Frameworks',
+    //   icon: BarChart3,
+    //   skills: [
+    //     { name: 'Statistical Analysis', level: 85 },
+    //     { name: 'Data Mining', level: 80 },
+    //     { name: 'Machine Learning', level: 75 },
+    //     { name: 'Predictive Modeling', level: 70 }
+    //   ]
+    // }
   ];
 
   return (
@@ -161,75 +162,74 @@ const Skills: React.FC<SkillsProps> = ({ darkMode }) => {
           ))}
         </div>
 
-        {/* Tools & Frameworks */}
-        <motion.div
-          className="mt-16 flex flex-col items-center justify-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <h3
-            className={`text-2xl font-semibold text-center mb-6 ${
-              darkMode ? 'text-white' : 'text-gray-900'
-            }`}
-          >
-            Tools & Frameworks I've Worked With
-          </h3>
+       {/* Tools & Frameworks */}
+<motion.div
+  className="mt-16 flex flex-col items-center justify-center"
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8 }}
+  viewport={{ once: true }}
+>
+  <h3
+    className={`text-2xl font-semibold text-center mb-6 ${
+      darkMode ? 'text-white' : 'text-gray-900'
+    }`}
+  >
+    Tools & Frameworks I've Worked With
+  </h3>
 
-          <div className="w-full max-w-5xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-4">
-            {[
-              {
-                category: 'Development Environments',
-                items: ['Eclipse', 'IntelliJ IDEA', 'VS Code']
-              },
-              {
-                category: 'Build & Versioning',
-                items: ['Maven', 'GitHub']
-              },
-              {
-                category: 'BI & Visualization',
-                items: ['Power BI', 'Tableau', 'Microsoft Excel']
-              },
-              {
-                category: 'UI/UX & Design',
-                items: ['Figma'],
-                center: true
-              }
-            ].map((group, i) => (
-              <motion.div
-                key={group.category}
-                className={`p-4 rounded-lg shadow ${
-                  darkMode ? 'bg-gray-800 text-gray-200' : 'bg-white text-gray-800'
-                } ${group.center ? 'col-span-full flex justify-center' : ''}`}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.2, duration: 0.6 }}
-                viewport={{ once: true }}
+  <div className="w-full max-w-5xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-4">
+    {[
+      {
+        category: 'Development Environments',
+        items: ['Eclipse', 'IntelliJ IDEA', 'VS Code']
+      },
+      {
+        category: 'Build & Versioning',
+        items: ['Maven', 'GitHub']
+      },
+      {
+        category: 'UI/UX & Design',
+        items: ['Figma']
+      },
+      {
+        category: 'BI & Visualization',
+        items: ['Power BI', 'Tableau', 'Microsoft Excel'],
+        center: true
+      }
+    ].map((group, i) => (
+      <motion.div
+        key={group.category}
+        className={`p-4 rounded-lg shadow-lg ${
+          darkMode ? 'bg-gray-800 text-gray-200' : 'bg-white text-gray-800'
+        } ${group.center ? 'col-span-full flex justify-center' : ''}`}
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: i * 0.2, duration: 0.6 }}
+        viewport={{ once: true }}
+      >
+        <div className="text-center">
+          <h4 className="text-lg font-semibold mb-2">{group.category}</h4>
+          <div className="flex flex-wrap justify-center gap-2">
+            {group.items.map((tool) => (
+              <span
+                key={tool}
+                className={`px-3 py-1 rounded-full text-sm font-medium transition-all duration-200 ${
+                  darkMode
+                    ? 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+                    : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
+                }`}
               >
-                <div className="text-center">
-                  <h4 className="text-lg font-semibold mb-2">{group.category}</h4>
-                  <div className="flex flex-wrap justify-center gap-2">
-                    {group.items.map((tool) => (
-                      <span
-                        key={tool}
-                        className={`px-3 py-1 rounded-full text-sm font-medium transition-all duration-200 ${
-                          darkMode
-                            ? 'bg-gray-700 text-gray-300 hover:bg-gray-600'
-                            : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
-                        }`}
-                      >
-                        {tool}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
+                {tool}
+              </span>
             ))}
           </div>
-        </motion.div>
-      </div>
-    </motion.section>
+        </div>
+      </motion.div>
+    ))}
+  </div>
+</motion.div>
+
   );
 };
 

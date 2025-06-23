@@ -55,9 +55,7 @@ const Certifications: React.FC<CertificationsProps> = ({ darkMode }) => {
 </h2>
 
           <div className="w-24 h-1 bg-blue-600 mx-auto"></div>
-          <p className={`mt-4 text-lg max-w-2xl mx-auto ${
-            darkMode ? 'text-gray-300' : 'text-gray-400'
-          }`}>
+          <p className={`mt-4 text-lg max-w-2xl mx-auto ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
             Professional certifications demonstrating expertise in data analytics and business intelligence
           </p>
         </div>

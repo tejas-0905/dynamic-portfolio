@@ -58,7 +58,7 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
               className="grid grid-cols-2 gap-6 mt-8"
               initial={{ scale: 0.9, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.0 }}
+              transition={{ duration: 0.6 }}
 >
               {/* Use InView hook for each card */}
               {[
@@ -73,7 +73,7 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
                             className={`p-4 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-white'} shadow-lg`}
                               >
                             <div className="text-2xl font-bold text-blue-600 mb-2">
-                             {inView && <CountUp end={item.value} duration={2} />}+
+                             {inView && <CountUp end={item.value} duration={6} />}+
                              </div>
                             <div className={`text-sm ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
                           {item.label}

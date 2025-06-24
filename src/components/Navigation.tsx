@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Moon, Sun, Menu, X } from 'lucide-react';
 
 interface NavigationProps {
@@ -29,11 +29,16 @@ const Navigation: React.FC<NavigationProps> = ({
     { id: 'contact', label: 'Contact' }
   ];
 
+  // Disable scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+  }, [isMenuOpen]);
+
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+    <nav className={`fixed top-0 left-0 right-0 z-50 w-full overflow-hidden transition-all duration-300 ${
       darkMode ? 'bg-gray-900/95 backdrop-blur-sm border-gray-700' : 'bg-white/95 backdrop-blur-sm border-gray-200'
     } border-b`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
@@ -56,9 +61,7 @@ const Navigation: React.FC<NavigationProps> = ({
                   onClick={() => scrollToSection(item.id)}
                   className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
                     activeSection === item.id
-                      ? darkMode
-                        ? 'bg-blue-600 text-white'
-                        : 'bg-blue-600 text-white'
+                      ? 'bg-blue-600 text-white'
                       : darkMode
                       ? 'text-gray-300 hover:bg-gray-700 hover:text-white'
                       : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
@@ -96,30 +99,31 @@ const Navigation: React.FC<NavigationProps> = ({
         </div>
       </div>
 
-      {/* Mobile Navigation */}
+      {/* Fullscreen Mobile Navigation */}
       {isMenuOpen && (
-        <div className={`md:hidden transition-all duration-300 ${
-          darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'
-        } border-t`}>
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium transition-all duration-200 ${
-                  activeSection === item.id
-                    ? darkMode
-                      ? 'bg-blue-600 text-white'
-                      : 'bg-blue-600 text-white'
-                    : darkMode
-                    ? 'text-gray-300 hover:bg-gray-700 hover:text-white'
-                    : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
-          </div>
+        <div
+          className={`fixed inset-0 z-40 md:hidden flex flex-col justify-center items-center space-y-6 px-4 transition-all duration-300 ${
+            darkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'
+          }`}
+        >
+          {navItems.map((item) => (
+            <button
+              key={item.id}
+              onClick={() => {
+                scrollToSection(item.id);
+                setIsMenuOpen(false);
+              }}
+              className={`text-xl font-semibold px-4 py-2 rounded-md transition-all duration-200 ${
+                activeSection === item.id
+                  ? 'bg-blue-600 text-white'
+                  : darkMode
+                  ? 'hover:bg-gray-700 hover:text-white'
+                  : 'hover:bg-gray-100 hover:text-gray-900'
+              }`}
+            >
+              {item.label}
+            </button>
+          ))}
         </div>
       )}
     </nav>

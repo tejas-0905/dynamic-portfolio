@@ -15,8 +15,8 @@ const Hero: React.FC<HeroProps> = ({ darkMode }) => {
   ];
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center pt-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="home" className="min-h-screen flex items-center justify-center pt-16 w-full overflow-hidden">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Text Content */}
           <div className="space-y-8 animate-fade-in-up">
@@ -64,7 +64,6 @@ const Hero: React.FC<HeroProps> = ({ darkMode }) => {
             <div className="flex flex-wrap gap-4">
               <a
                 href="https://drive.google.com/file/d/1f1R86K2OpkaQZ4k2xNduXA3nPLF6-O9Q/view"
-                download
                 className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
               >
                 <Download className="h-5 w-5 mr-2" />
@@ -125,28 +124,26 @@ const Hero: React.FC<HeroProps> = ({ darkMode }) => {
             </div>
           </div>
 
-          {/* Profile Image - moved toward center */}
-<div className="flex justify-center lg:justify-center animate-fade-in-right">
-  <div className="relative">
-    <div className="w-80 h-80 rounded-full overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-300">
-      <img
-        src="/IMG-20250616-WA0044.jpg"
-        alt="Tejas Jiddewar"
-        className="w-full h-full object-cover"
-      />
-    </div>
+          {/* Profile Image */}
+          <div className="flex justify-center lg:justify-center animate-fade-in-right">
+            <div className="relative">
+              <div className="w-72 h-72 md:w-80 md:h-80 rounded-full overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-300">
+                <img
+                  src="/IMG-20250616-WA0044.jpg"
+                  alt="Tejas Jiddewar"
+                  className="w-full h-full object-cover"
+                />
+              </div>
 
-    {/* Floating Elements */}
-    <div className="absolute -top-4 -right-4 w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center animate-bounce">
-      <span className="text-white font-bold text-sm">Data</span>
-    </div>
-
-    <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center animate-pulse">
-      <span className="text-white font-bold text-xs">SQL</span>
-    </div>
-  </div>
-</div>
-
+              {/* Floating Elements */}
+              <div className="absolute -top-4 -right-4 w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center animate-bounce">
+                <span className="text-white font-bold text-sm">Data</span>
+              </div>
+              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center animate-pulse">
+                <span className="text-white font-bold text-xs">SQL</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

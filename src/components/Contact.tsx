@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Github, Linkedin, Send, CheckCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { db } from '../firebase';
+import { collection, addDoc, Timestamp } from 'firebase/firestore';
 
 interface ContactProps {
   darkMode: boolean;
@@ -22,13 +24,24 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    }, 3000);
+
+    try {
+      await addDoc(collection(db, "contacts"), {
+        ...formData,
+        createdAt: Timestamp.now()
+      });
+
+      setIsSubmitted(true);
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      }, 3000);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Something went wrong. Please try again.");
+    }
   };
 
   const contactInfo = [
@@ -83,15 +96,11 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${
-            darkMode ? 'text-white' : 'text-gray-900'
-          }`}>
+          <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
             Get In Touch
           </h2>
           <div className="w-24 h-1 bg-blue-600 mx-auto"></div>
-          <p className={`mt-4 text-lg max-w-2xl mx-auto ${
-            darkMode ? 'text-gray-400' : 'text-gray-600'
-          }`}>
+          <p className={`mt-4 text-lg max-w-2xl mx-auto ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
             Let's discuss how we can work together to turn your data into actionable insights
           </p>
         </motion.div>
@@ -105,14 +114,10 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
             className="space-y-8"
           >
             <div>
-              <h3 className={`text-2xl font-semibold mb-6 ${
-                darkMode ? 'text-white' : 'text-gray-900'
-              }`}>
+              <h3 className={`text-2xl font-semibold mb-6 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                 Let's Connect
               </h3>
-              <p className={`text-lg mb-8 ${
-                darkMode ? 'text-gray-300' : 'text-gray-600'
-              }`}>
+              <p className={`text-lg mb-8 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
                 I'm always interested in discussing new opportunities, collaborating on data projects,
                 or simply connecting with fellow data enthusiasts. Feel free to reach out!
               </p>
@@ -125,9 +130,7 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
                     <info.icon className="h-6 w-6 text-white" />
                   </div>
                   <div>
-                    <div className={`text-sm font-medium ${
-                      darkMode ? 'text-gray-400' : 'text-gray-500'
-                    }`}>
+                    <div className={`text-sm font-medium ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
                       {info.label}
                     </div>
                     {info.href !== '#' ? (
@@ -140,9 +143,7 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
                         {info.value}
                       </a>
                     ) : (
-                      <div className={`text-lg ${
-                        darkMode ? 'text-gray-300' : 'text-gray-700'
-                      }`}>
+                      <div className={`text-lg ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                         {info.value}
                       </div>
                     )}
@@ -157,9 +158,7 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <h4 className={`text-lg font-semibold mb-4 ${
-                darkMode ? 'text-white' : 'text-gray-900'
-              }`}>
+              <h4 className={`text-lg font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                 Follow Me
               </h4>
               <div className="flex space-x-4">
@@ -196,9 +195,7 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
             {isSubmitted ? (
               <div className="text-center py-12">
                 <CheckCircle className="h-16 w-16 text-green-600 mx-auto mb-4" />
-                <h3 className={`text-xl font-semibold mb-2 ${
-                  darkMode ? 'text-white' : 'text-gray-900'
-                }`}>
+                <h3 className={`text-xl font-semibold mb-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                   Message Sent!
                 </h3>
                 <p className={`${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
@@ -209,9 +206,7 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className={`block text-sm font-medium mb-2 ${
-                      darkMode ? 'text-gray-300' : 'text-gray-700'
-                    }`}>
+                    <label className={`block text-sm font-medium mb-2 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                       Name *
                     </label>
                     <input
@@ -230,9 +225,7 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
                   </div>
 
                   <div>
-                    <label className={`block text-sm font-medium mb-2 ${
-                      darkMode ? 'text-gray-300' : 'text-gray-700'
-                    }`}>
+                    <label className={`block text-sm font-medium mb-2 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                       Email *
                     </label>
                     <input
@@ -252,9 +245,7 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
                 </div>
 
                 <div>
-                  <label className={`block text-sm font-medium mb-2 ${
-                    darkMode ? 'text-gray-300' : 'text-gray-700'
-                  }`}>
+                  <label className={`block text-sm font-medium mb-2 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                     Subject *
                   </label>
                   <input
@@ -273,9 +264,7 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
                 </div>
 
                 <div>
-                  <label className={`block text-sm font-medium mb-2 ${
-                    darkMode ? 'text-gray-300' : 'text-gray-700'
-                  }`}>
+                  <label className={`block text-sm font-medium mb-2 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                     Message *
                   </label>
                   <textarea

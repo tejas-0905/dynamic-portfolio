@@ -3,6 +3,7 @@ import { Mail, Phone, MapPin, Github, Linkedin, Send, CheckCircle } from 'lucide
 import { motion } from 'framer-motion';
 import { db } from '../firebase';
 import { collection, addDoc, Timestamp } from 'firebase/firestore';
+import emailjs from '@emailjs/browser';
 
 interface ContactProps {
   darkMode: boolean;
@@ -28,10 +29,19 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
     e.preventDefault();
 
     try {
+      // 1. Save to Firebase
       await addDoc(collection(db, "contacts"), {
         ...formData,
         createdAt: Timestamp.now()
       });
+
+      // 2. Send Email via EmailJS
+      await emailjs.send(
+        'tejasji',      // Replace with your EmailJS service ID
+        'template_pnrgc86',     // Replace with your EmailJS template ID
+        formData,
+        'PUghrjS3mpWWLZEzu'       // Replace with your EmailJS public key
+      );
 
       setIsSubmitted(true);
       setTimeout(() => {
@@ -85,7 +95,6 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
       color: 'hover:text-red-600'
     }
   ];
-
   return (
     <section id="contact" className={`py-20 ${darkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

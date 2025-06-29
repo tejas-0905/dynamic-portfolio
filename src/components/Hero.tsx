@@ -130,7 +130,7 @@ const Hero: React.FC<HeroProps> = ({ darkMode }) => {
   <div className="relative">
     <div className="w-80 h-80 rounded-full overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-300">
       <img
-        src="dist\tejass_pass_photo.png"
+        src="/tejass_pass_photo.png"
         alt="Tejas Jiddewar"
         className="w-full h-full object-cover"
       />
